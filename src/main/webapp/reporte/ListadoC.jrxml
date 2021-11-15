@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListadoC" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DbFarmavic"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM vjCompra]]>
+	</queryString>
+	<field name="NOMPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMPROV"/>
+	</field>
+	<field name="RUCPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="RUCPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="RUCPROV"/>
+	</field>
+	<field name="GENMED" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="GENMED"/>
+		<property name="com.jaspersoft.studio.field.label" value="GENMED"/>
+	</field>
+	<field name="PRESMED" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PRESMED"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRESMED"/>
+	</field>
+	<field name="CANTCOM" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CANTCOM"/>
+		<property name="com.jaspersoft.studio.field.label" value="CANTCOM"/>
+	</field>
+	<field name="IMPCOM" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="IMPCOM"/>
+		<property name="com.jaspersoft.studio.field.label" value="IMPCOM"/>
+	</field>
+	<field name="FECHCOM" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="FECHCOM"/>
+		<property name="com.jaspersoft.studio.field.label" value="FECHCOM"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{NOMPROV}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="ff649bda-bbd1-4c2d-bd67-21f69ad64bbf"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="a7ae31ce-9474-4e4b-9627-eb9152ff7b80"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="102" height="24" forecolor="#736343" uuid="b5a25815-f4ed-4382-9712-d113dc519d4e"/>
+						<textElement textAlignment="Center">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{NOMPROV}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement style="SubTitle" x="170" y="0" width="100" height="24" forecolor="#736343" uuid="636cb4e1-17eb-4ce3-80a9-ea3ffa8851f5"/>
+						<textElement textAlignment="Center">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{RUCPROV}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement style="SubTitle" x="280" y="0" width="100" height="24" forecolor="#736343" uuid="784547b9-dd4d-476e-8d0f-f65d2f0b8315"/>
+						<textElement textAlignment="Center">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{GENMED}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement style="SubTitle" x="411" y="0" width="100" height="24" forecolor="#736343" uuid="1ba95e68-86d9-45bc-8661-c64d19c83d31"/>
+						<textElement textAlignment="Center">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{PRESMED}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement style="SubTitle" x="520" y="-1" width="100" height="24" forecolor="#736343" uuid="8d949fd3-a144-4d5a-b860-b9cd8fca6013"/>
+						<textElement textAlignment="Center">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{CANTCOM}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement style="SubTitle" x="621" y="-1" width="100" height="24" forecolor="#736343" uuid="fce01bff-3cdd-4a76-beaf-f2f7414ba6cf"/>
+						<textElement textAlignment="Center">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{IMPCOM}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement style="SubTitle" x="730" y="-1" width="100" height="24" forecolor="#736343" uuid="7b8b43a2-d275-41eb-8eee-4cec33562a0a"/>
+						<textElement textAlignment="Center">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{FECHCOM}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{RUCPROV}]]></groupExpression>
+	</group>
+	<group name="GENMED">
+		<groupExpression><![CDATA[$F{GENMED}]]></groupExpression>
+	</group>
+	<group name="PRESMED">
+		<groupExpression><![CDATA[$F{PRESMED}]]></groupExpression>
+	</group>
+	<group name="CANTCOM">
+		<groupExpression><![CDATA[$F{CANTCOM}]]></groupExpression>
+	</group>
+	<group name="IMPCOM">
+		<groupExpression><![CDATA[$F{IMPCOM}]]></groupExpression>
+	</group>
+	<group name="FECHCOM">
+		<groupExpression><![CDATA[$F{FECHCOM}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="139" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="240" y="0" width="293" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[FARMAVIC]]></text>
+			</staticText>
+			<image>
+				<reportElement x="650" y="10" width="140" height="80" uuid="4234807b-d7de-4ad9-b511-a74253ae3403"/>
+				<imageExpression><![CDATA["C:/Users/VICTOR/Downloads/CANALES/logov3/logo-01.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="SubTitle" x="260" y="68" width="240" height="22" uuid="8ccfad9a-8a7d-4335-9102-39a293c5dfa0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE COMPRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="110" width="80" height="24" forecolor="#052BFF" uuid="d191c712-35c9-4fd9-ba7f-f4e1109f4697">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVEEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="110" width="60" height="24" forecolor="#052BFF" uuid="29293e26-6017-49ac-9552-02c724700be2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="110" width="160" height="24" forecolor="#052BFF" uuid="708d46d6-f43c-4822-87f5-2f05da9f8a31">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEDICAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="110" width="120" height="24" forecolor="#052BFF" uuid="831c0565-7096-4dd1-a4f7-608d725cdc12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESENTACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="110" width="70" height="24" forecolor="#052BFF" uuid="c344ab24-4626-4185-a21b-ae2b981e963b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="610" y="110" width="90" height="24" forecolor="#052BFF" uuid="27902259-0dc2-4270-a3ed-1ff576a9b6ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="720" y="110" width="90" height="24" forecolor="#052BFF" uuid="99ee0352-8013-4c95-bae5-9d4fb66a0a7c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="e9d2002a-c8ee-4649-a258-640dad29110c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="fa5e88d5-a011-4e32-8f12-ce923f903111"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

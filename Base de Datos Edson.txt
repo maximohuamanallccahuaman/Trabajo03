@@ -1,0 +1,195 @@
+/* Crear base de datos */
+CREATE TABLE EMPLOYEES (
+employee_id	INTEGER NOT NULL,	
+first_name VARCHAR2(60) NOT NULL,
+last_name VARCHAR2(60) NOT NULL,	
+email CHAR(30) NOT NULL,
+phone_number CHAR(15) NOT NULL,
+hire_date CHAR(9) NOT NULL,
+job_id	INTEGER NOT NULL,  
+salary CHAR(7) NOT NULL,
+commission_pct	VARCHAR2 (40)  NULL,	
+manager_id	INTEGER  NULL,
+department_head	VARCHAR2  NULL
+CONSTRAINT employee_id_pk PRIMARY KEY ( employee_id )
+);
+
+/*Ejemplo1:*/
+                /* INSERTAR :*/
+
+INSERT INTO employees (employee_id, first_name,
+last_name, email, hire_date, job_id) 
+VALUES (305, 'Kareem', 'Naser',
+'naserk@oracle.com', SYSDATE, 'SR_SA_REP');
+
+INSERT INTO employees (employee_id, first_name, last_name, 
+email, phone_number, hire_date, job_id, salary, 
+commission_pct, manager_id, department_head) 
+VALUES (305, 'Kareem', 'Naser', 'naserk@oracle.com', 
+'111-222-3333',SYSDATE,'SR_SA_REP',7000,NULL,NULL,NULL);
+
+INSERT Implicit:
+INSERT INTO employees 
+VALUES (305, 'Kareem', 'Naser',
+'naserk@oracle.com', '111-222-3333', SYSDATE, 
+'SR_SA_REP', 7000, NULL, NULL, NULL, NULL);
+
+                 /* UPDATE:*/
+
+UPDATE employees
+SET salary = 11000
+WHERE employee_id = 176; (no)
+
+UPDATE employees
+SET salary = 11000, commission_pct = .3  (si)
+WHERE employee_id = 176;
+
+                 /* DELETE:*/
+
+DELETE FROM employees
+WHERE employee_id = 149;
+
+DELETE FROM employees
+WHERE department_id = 80;
+
+                 /*  MERGE:*/
+
+CREATE TABLE bonuses
+(employee_id NUMBER(6,0) NOT NULL, 
+bonus NUMBER(8,2) DEFAULT 0);
+
+INSERT INTO bonuses(employee_id)
+(SELECT employee_id FROM employees
+WHERE salary < 10000);
+
+MERGE INTO bonuses b
+USING employees e
+ON (b.employee_id = e.employee_id)
+WHEN MATCHED THEN 
+UPDATE SET b.bonus = e.salary * .05;
+
+  /* Sentencias SELECT en PL / SQL */
+
+SELECT select_list
+INTO {variable_name[, variable_name]...
+| record_name}
+FROM table
+[WHERE condition];
+
+                     /* Usando la cláusula INTO */
+
+DECLARE
+v_emp_lname employees.last_name%TYPE;
+BEGIN
+SELECT last_name
+INTO v_emp_lname
+FROM employees
+WHERE employee_id = 100; 
+DBMS_OUTPUT.PUT_LINE('His last name is ' || v_emp_lname);
+END;
+   
+                    /* Recuperar datos en PL / SQL */
+
+DECLARE
+v_emp_hiredate employees.hire_date%TYPE;
+v_emp_salary employees.salary%TYPE; 
+BEGIN
+SELECT hire_date, salary
+INTO v_emp_hiredate, v_emp_salary
+FROM employees
+WHERE employee_id = 100; 
+DBMS_OUTPUT.PUT_LINE('Hiredate: ' || v_emp_hiredate);
+DBMS_OUTPUT.PUT_LINE('Salary: '|| v_emp_salary);
+END;
+
+                  /* Recuperación de datos en PL / SQL */
+
+DECLARE 
+v_sum_sal NUMBER(10,2); 
+v_deptno NUMBER NOT NULL := 60; 
+BEGIN
+SELECT SUM(salary) -- group function
+INTO v_sum_sal FROM employees
+WHERE department_id = v_deptno;
+DBMS_OUTPUT.PUT_LINE('Dep #60 Salary Total: ' || v_sum_sal);
+END;
+
+ /* Ejemplo2:*/
+                  /* Directrices para convenciones de nomenclatura  eliminando el siguente bloque PL/SQL */                   
+
+DECLARE
+last_name employees.last_name%TYPE := 'King'; 
+BEGIN
+DELETE FROM emp_dup WHERE last_name = last_name; 
+END;
+
+/* Ejemplo3: */                 
+/* Uso de atributos de cursor implícitos */
+/* Eliminar filas que tienen la identificación de empleado especificada dela tabla COPY_EMP y Imprime el número de filas eliminadas */
+
+DECLARE
+v_deptno copy_emp.department_id%TYPE := 50;
+BEGIN
+DELETE FROM copy_emp
+WHERE department_id = v_deptno;
+DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' rows deleted.');
+END
+
+/* Actualizar varias filas en la tabla COPY_EMP y Imprime el número de filas actualizadas */
+
+DECLARE
+v_sal_increase employees.salary%TYPE := 800; 
+BEGIN
+UPDATE copy_emp
+SET salary = salary + v_sal_increase
+WHERE job_id = 'ST_CLERK';
+DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' rows updated.');
+END;
+
+/* Mira este código que crea una tabla y luegoejecuta un bloque PL / SQL• Determine qué valor se inserta en RESULTADOS  */
+
+CREATE TABLE results (num_rows NUMBER(4));
+BEGIN
+UPDATE copy_emp
+SET salary = salary + 100
+WHERE job_id = 'ST_CLERK';
+INSERT INTO results (num_rows)
+VALUES (SQL%ROWCOUNT);
+END;
+  
+/* Para INSERTAR el valor en la tabla RESULTADOS */
+
+DECLARE
+v_rowcount INTEGER; 
+BEGIN
+UPDATE copy_emp 
+SET salary = salary + 100 
+WHERE job_id = 'ST_CLERK';
+DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' rows in COPY_EMPupdated.');
+v_rowcount := SQL%ROWCOUNT; 
+INSERT INTO results (num_rows) 
+VALUES (v_rowcount);
+DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' rows in RESULTS updated.');
+END
+
+/* Ejemplo4:*/
+
+/* Permite agrega una fila de datos */
+BEGIN
+INSERT INTO pairtable VALUES (3, 4); 
+ROLLBACK;
+INSERT INTO pairtable VALUES (5, 6);
+COMMIT; 
+END;
+
+/* Se utiliza para devolver los valores de datos alpunto de un SAVEPOINT */
+BEGIN
+INSERT INTO pairtable VALUES (7, 8); 
+SAVEPOINT my_sp_1; 
+INSERT INTO pairtable VALUES (9, 10); 
+SAVEPOINT my_sp_2; 
+INSERT INTO pairtable VALUES (11, 12); 
+ROLLBACK to my_sp_1; 
+INSERT INTO pairtable VALUES (13, 14); 
+COMMIT;
+END;
