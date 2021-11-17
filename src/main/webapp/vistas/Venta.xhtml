@@ -9,6 +9,7 @@
     <ui:define name="content">
         <h:head>
             <title>Facelet Title</title>
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body>
             <p:growl id="msj" showDetail="true" >
