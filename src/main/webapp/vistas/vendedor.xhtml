@@ -12,6 +12,7 @@
         <h:head>
             <title>Listado de Vendedores</title>
             <f:event listener="#{vendedorC.listar()}" type="preRenderView" />
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body >
 
