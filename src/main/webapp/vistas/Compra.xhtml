@@ -16,6 +16,7 @@
         <h:head>
             <title>Listado de Compra</title>
             <f:event listener="#{compraC.listar()}" type="preRenderView" />
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body>
 
