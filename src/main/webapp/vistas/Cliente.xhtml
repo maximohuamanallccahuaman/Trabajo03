@@ -12,6 +12,7 @@
         <h:head>
             <title>Listado de Clientes</title>
             <f:event listener="#{clienteC.listar()}" type="preRenderView" />
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body>
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
