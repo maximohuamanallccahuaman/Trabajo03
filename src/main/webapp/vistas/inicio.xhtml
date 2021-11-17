@@ -6,7 +6,7 @@
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Farmavic</title>
-
+        <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
     </h:head>
     <body>
 
