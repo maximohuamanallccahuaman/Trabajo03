@@ -14,6 +14,7 @@
         <h:head>
             <title>MAESTRO CONSULTA DETALLE</title>
             <f:event listener="#{consultasC.listar()}" type="preRenderView" />
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body>
 
