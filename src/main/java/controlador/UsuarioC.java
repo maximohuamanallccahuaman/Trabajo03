@@ -87,11 +87,12 @@ public class UsuarioC implements Serializable {
                 }
             } else {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("objetoUsuario", usuario);
+                
                 this.loginNivel();
                 if (dao.nivel == 1) {
                    
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡BIENVENIDO!", "Ingreso Exitoso"));
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/FARMAVIC-MAVEN/faces/vistas/Administrador.xhtml");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("/FARMAVIC-MAVEN/faces/vistas/inicio.xhtml");
                 }
                 if (dao.nivel == 2) {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡BIENVENIDO!", "Ingreso Exitoso"));
@@ -126,25 +127,24 @@ public class UsuarioC implements Serializable {
             e.printStackTrace();
         }
     }
-    
     // Obtener el objeto de la sesión activa
     public static Usuario obtenerObjetoSesion() {
         return (Usuario) FacesContext.getCurrentInstance().getExternalContext().
                 getSessionMap().get("objetoUsuario");
     }
-    
+
     // Si la sesión no está iniciada no permitirá entrar a otra vista de la aplicación
     public void seguridadSesion() throws IOException {
         if (obtenerObjetoSesion() == null) {
             FacesContext.getCurrentInstance().getExternalContext().
-                    redirect("/FARMAVIC_ODAO/faces/Login.xhtml");
+                    redirect("/FARMAVIC-MAVEN/faces/Login.xhtml");
         }
     }
 
     // Cerrar y limpiar la sesión y direccionar al xhtml inicial del proyecto
     public void cerrarSesion() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/FARMAVIC_ODAO/faces/Login.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/FARMAVIC-MAVEN/faces/Login.xhtml");
     }
 
     // Si la sesión está activa se redirecciona a la vista principal
@@ -152,7 +152,7 @@ public class UsuarioC implements Serializable {
         Usuario us = obtenerObjetoSesion();
         if (us != null) {
             FacesContext.getCurrentInstance().getExternalContext().
-                    redirect("/FARMAVIC_ODAO/faces/inicio.xhtml");
+                    redirect("/FARMAVIC-MAVEN/faces/inicio.xhtml");
         }
     }
 }
